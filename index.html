@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desincompatibilização Eleitoral — Monteiro e Monteiro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --verde:       #006851;
+  --verde-deep:  #004d3b;
+  --verde-mid:   #008060;
+  --verde-light: #e3f2ed;
+  --prata:       #AEADB3;
+  --prata-light: #e8e8ea;
+  --escuro:      #161614;
+  --off:         #f4f3f0;
+  --branco:      #ffffff;
+  --texto:       #1a1a18;
+  --muted:       #555553;
+  --hint:        #999997;
+  --borda:       rgba(0,104,81,0.15);
+  --borda-forte: rgba(0,104,81,0.30);
+  --radius:      6px;
+  --radius-lg:   12px;
+  --radius-xl:   18px;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--off);
+  color: var(--texto);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════ */
+.site-header {
+  background: var(--escuro);
+  position: relative;
+  overflow: hidden;
+}
+
+/* grade triangular decorativa */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='340'%3E%3Cg fill='none' stroke='rgba(0,104,81,0.22)' stroke-width='0.8'%3E%3Cpolygon points='200,12 380,328 20,328'/%3E%3Cpolygon points='200,48 340,308 60,308'/%3E%3Cpolygon points='200,84 300,288 100,288'/%3E%3Cpolygon points='110,12 290,328 -70,328'/%3E%3Cpolygon points='290,12 470,328 110,328'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 400px 340px;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* barra verde fina no topo */
+.site-header::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--verde) 0%, var(--verde-mid) 60%, transparent 100%);
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-left { display: flex; flex-direction: column; gap: 4px; }
+
+.header-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--verde-mid);
+}
+
+.header-nome {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--branco);
+  line-height: 1.1;
+}
+
+.header-sub {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.40);
+  margin-top: 2px;
+}
+
+.header-divider {
+  width: 32px; height: 1px;
+  background: var(--verde);
+  margin: 8px 0;
+}
+
+.header-contato {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.header-contato a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.header-contato a:hover { color: var(--verde-mid); }
+.header-contato-sep { color: rgba(255,255,255,0.25); }
+
+/* ── coluna direita: texto do sistema ─── */
+.header-right {
+  text-align: right;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(0,104,81,0.3);
+}
+
+.header-sys-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 6px;
+}
+
+.header-sys-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.35;
+  max-width: 200px;
+  margin-left: auto;
+}
+
+@media (max-width: 580px) {
+  .header-inner { grid-template-columns: 1fr; }
+  .header-right { text-align: left; border-left: none; border-top: 1px solid rgba(0,104,81,0.3); padding-left: 0; padding-top: 1rem; }
+  .header-sys-title { max-width: none; margin-left: 0; }
+}
+
+/* ══════════════════════════════════════════════════
+   GRID DE SELEÇÃO
+══════════════════════════════════════════════════ */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+
+.form-card {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 8px rgba(0,104,81,0.06);
+}
+
+/* cabeçalho do card */
+.card-header {
+  background: var(--verde);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='160'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Cpolygon points='100,6 190,154 10,154'/%3E%3Cpolygon points='100,28 170,140 30,140'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 200px 160px;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+.card-header-step {
+  position: relative;
+  z-index: 1;
+  width: 22px; height: 22px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  color: var(--branco);
+  flex-shrink: 0;
+}
+.card-header-label {
+  position: relative; z-index: 1;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+}
+
+/* corpo do card */
+.card-body {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 560px) { .card-body { grid-template-columns: 1fr; } }
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+
+.form-group label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* indicador de dependência */
+.select-locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+select {
+  width: 100%;
+  padding: 10px 32px 10px 12px;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--radius);
+  background: var(--off);
+  color: var(--texto);
+  font-size: 13.5px;
+  font-family: inherit;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23006851' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.15s, box-shadow 0.15s, opacity 0.2s;
+}
+select:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(0,104,81,0.10);
+  background-color: var(--branco);
+}
+
+.btn-consultar {
+  grid-column: 1 / -1;
+  padding: 12px 20px;
+  background: var(--verde);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-consultar:hover { background: var(--verde-deep); }
+.btn-consultar:active { transform: scale(0.99); }
+
+/* ══════════════════════════════════════════════════
+   RESULTADO
+══════════════════════════════════════════════════ */
+.result-card {
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-xl);
+  background: var(--branco);
+  box-shadow: 0 1px 8px rgba(0,104,81,0.06);
+  overflow: hidden;
+  display: none;
+}
+.result-card.show { display: block; }
+
+.result-header {
+  background: var(--verde);
+  padding: 1.5rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.result-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Cpolygon points='150,8 285,232 15,232'/%3E%3Cpolygon points='150,36 255,212 45,212'/%3E%3Cpolygon points='70,8 205,232 -65,232'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 240px;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+.result-header > * { position: relative; z-index: 1; }
+
+.badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 10px;
+}
+.badge-descompat { background: rgba(255,255,255,0.20); color: var(--branco); }
+.badge-licenca   { background: rgba(0,200,130,0.30);   color: #c8ffe8; }
+.badge-renuncia  { background: rgba(255,200,80,0.28);  color: #ffe8a0; }
+.badge-militar   { background: rgba(180,178,185,0.30); color: #e8e8ea; }
+.badge-nenhum    { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.7); }
+.badge-aviso     { background: rgba(255,150,40,0.30);  color: #ffd080; }
+.badge-comunicador { background: rgba(100,180,255,0.25); color: #c0e8ff; }
+.badge-religioso { background: rgba(200,160,255,0.25); color: #e0d0ff; }
+
+.result-prazo {
+  font-size: 26px; font-weight: 700;
+  color: var(--branco);
+  margin-bottom: 4px; line-height: 1.2;
+}
+.result-tipo { font-size: 12px; color: rgba(255,255,255,0.60); }
+
+.result-body { padding: 1.5rem 1.75rem; }
+
+.result-desc {
+  font-size: 14px; color: var(--texto);
+  line-height: 1.75; margin-bottom: 1rem;
+}
+
+.divider { border: none; border-top: 1px solid var(--borda); margin: 1rem 0; }
+
+.device-block {
+  background: var(--verde-light);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--verde);
+  padding: 10px 14px; margin-bottom: 8px;
+}
+.device-label {
+  font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--verde); margin-bottom: 4px;
+}
+.device-text { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+.obs-block {
+  background: #fffbec;
+  border-radius: var(--radius);
+  border-left: 3px solid #c8a000;
+  padding: 10px 14px; margin-top: 8px;
+}
+.obs-label {
+  font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: #8a6c00; margin-bottom: 3px;
+}
+.obs-text { font-size: 12.5px; color: #5a4800; line-height: 1.6; }
+
+.empty-msg {
+  text-align: center; padding: 2.5rem 1rem;
+  color: var(--hint); font-size: 14px;
+}
+
+/* ══════════════════════════════════════════════════
+   RODAPÉ
+══════════════════════════════════════════════════ */
+footer {
+  margin-top: 2.5rem;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--hint);
+  line-height: 1.7;
+}
+
+.prazo-card {
+  background: var(--verde-light);
+  border: 1px solid var(--borda-forte);
+  border-left: 4px solid var(--verde);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.5rem;
+  margin-bottom: 0;
+  box-shadow: 0 1px 6px rgba(0,104,81,0.07);
+}
+.prazo-card-title {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--verde); margin-bottom: 6px;
+}
+.prazo-card-text {
+  font-size: 13px; color: var(--texto);
+  font-weight: 400; line-height: 1.65;
+}
+.prazo-card-text strong { color: var(--verde); font-weight: 700; }
+
+.footer-aviso {
+  padding: 1rem 1.5rem;
+  border-top: none;
+}
+.footer-aviso strong { color: var(--muted); font-weight: 600; }
+.footer-aviso a { color: var(--verde); text-decoration: none; }
+.footer-aviso a:hover { text-decoration: underline; }
+
+.footer-firma {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.85rem 1.5rem;
+  border-top: 1px solid var(--borda);
+  background: var(--off);
+  font-size: 11px;
+  color: var(--prata);
+  letter-spacing: 0.03em;
+  flex-wrap: wrap;
+}
+.footer-firma a:hover { text-decoration: underline !important; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <span class="header-eyebrow">ELEIÇÕES 2026</span>
+      <p class="header-nome">Monteiro e Monteiro</p>
+      <p class="header-sub">Advogados Associados</p>
+      <div class="header-divider"></div>
+      <div class="header-contato">
+        <a href="mailto:novo@monteiro.adv.br">novo@monteiro.adv.br</a>
+        <span class="header-contato-sep">·</span>
+        <a href="tel:+5581991950063">(81) 99195-0063</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <p class="header-sys-label">Sistema de Consulta</p>
+      <p class="header-sys-title">Desincompatibilização&nbsp;Eleitoral</p>
+    </div>
+  </div>
+</header>
+
+<!-- ══ CONTEÚDO ══════════════════════════════════ -->
+<div class="container">
+
+  <div class="form-card">
+    <div class="card-header">
+      <span class="card-header-step">1</span>
+      <span class="card-header-label">Selecione o cargo atual e o cargo pretendido</span>
+    </div>
+    <div class="card-body">
+
+      <!-- PASSO 1: CARGO (agrupa todos, sem esfera) -->
+      <div class="form-group full">
+        <label for="cargo-atual">Cargo ou função atual</label>
+        <select id="cargo-atual" onchange="onCargoChange()">
+          <option value="">— selecione o cargo / função —</option>
+
+          <optgroup label="── Chefes do Executivo">
+            <option value="presidente">Presidente da República</option>
+            <option value="vice-presidente">Vice-Presidente da República</option>
+            <option value="governador">Governador de Estado / DF</option>
+            <option value="vice-governador">Vice-Governador de Estado / DF</option>
+            <option value="prefeito">Prefeito Municipal</option>
+            <option value="vice-prefeito">Vice-Prefeito Municipal</option>
+          </optgroup>
+
+          <optgroup label="── Ministérios e Secretarias (Federal)">
+            <option value="ministro">Ministro de Estado</option>
+            <option value="chefe-assessoria">Chefe de órgão de assessoramento direto da Presidência</option>
+            <option value="adv-geral">Advogado-Geral da União / Consultor-Geral da República</option>
+            <option value="sec-geral-min">Secretário-Geral / Secretário-Executivo / Secretário Nacional de Ministério</option>
+            <option value="interventor">Interventor Federal</option>
+          </optgroup>
+
+          <optgroup label="── Secretarias Estaduais e Municipais">
+            <option value="sec-estado">Secretário de Estado / DF</option>
+            <option value="chefe-gabinete-gov">Chefe do Gabinete Civil ou Militar do Governador</option>
+            <option value="sec-municipal">Secretário Municipal</option>
+            <option value="dir-org-estadual">Diretor de órgão estadual de assistência a municípios</option>
+          </optgroup>
+
+          <optgroup label="── Magistratura">
+            <option value="magistrado">Magistrado (federal ou estadual — TJ, TRF, TSE, STJ, STF etc.)</option>
+          </optgroup>
+
+          <optgroup label="── Ministério Público e Defensoria">
+            <option value="mp-federal">Membro do MP Federal / PGR</option>
+            <option value="mp-estadual">Membro do MP Estadual / MPDFT (fora da Comarca)</option>
+            <option value="mp-comarca">Membro do MP em exercício na Comarca da candidatura</option>
+            <option value="defensor">Membro da Defensoria Pública (federal, estadual ou na Comarca)</option>
+          </optgroup>
+
+          <optgroup label="── Tribunais de Contas">
+            <option value="tcu-membro">Membro do TCU</option>
+            <option value="tce-membro">Membro de TCE / TC-DF / TCM</option>
+          </optgroup>
+
+          <optgroup label="── Autarquias, EP, SEM e Fundações Públicas">
+            <option value="pres-autarquia-fed">Presidente / Diretor / Superintendente de autarquia, EP, SEM ou fundação federal</option>
+            <option value="pres-autarquia-est">Presidente / Diretor de autarquia, EP, SEM ou fundação estadual</option>
+            <option value="pres-autarquia-mun">Presidente / Diretor de autarquia, EP, SEM ou fundação municipal</option>
+          </optgroup>
+
+          <optgroup label="── Servidor Público Efetivo (estatutário)">
+            <option value="servidor-efetivo-fed">Servidor público federal efetivo (estatutário)</option>
+            <option value="servidor-efetivo-est">Servidor público estadual / distrital efetivo (estatutário)</option>
+            <option value="servidor-efetivo-mun">Servidor público municipal efetivo (estatutário)</option>
+          </optgroup>
+
+          <optgroup label="── Servidor em Cargo em Comissão (sem vínculo efetivo)">
+            <option value="comissionado-puro-fed">Servidor federal exclusivamente comissionado (sem cargo efetivo)</option>
+            <option value="comissionado-puro-est">Servidor estadual exclusivamente comissionado (sem cargo efetivo)</option>
+            <option value="comissionado-puro-mun">Servidor municipal exclusivamente comissionado (sem cargo efetivo)</option>
+          </optgroup>
+
+          <optgroup label="── Servidor Efetivo Ocupando Comissão">
+            <option value="efetivo-em-comissao">Servidor efetivo cedido / designado para cargo em comissão</option>
+          </optgroup>
+
+          <optgroup label="── Servidor Temporário / CLT">
+            <option value="servidor-temp">Servidor contratado temporariamente (art. 37, IX, CF) / empregado público CLT</option>
+          </optgroup>
+
+          <optgroup label="── Professor / Educação">
+            <option value="professor-efetivo">Professor de escola ou universidade pública (cargo efetivo)</option>
+            <option value="professor-temp">Professor contratado temporariamente em escola ou universidade pública</option>
+            <option value="reitor">Reitor de universidade pública federal ou estadual</option>
+          </optgroup>
+
+          <optgroup label="── Militares (Forças Armadas)">
+            <option value="cmte-forcas-armadas">Comandante do Exército / Marinha / Aeronáutica</option>
+            <option value="cmte-zona">Chefe do EMFA / Comandante de Distrito Naval / Região Militar / Zona Aérea (militar federal)</option>
+            <option value="militar-fa-mais10">Militar das FA com mais de 10 anos de serviço (sem cargo listado na LC 64/1990)</option>
+            <option value="militar-fa-menos10">Militar das FA com menos de 10 anos de serviço</option>
+          </optgroup>
+
+          <optgroup label="── Militares Estaduais (PM / BM)">
+            <option value="pm-bm-mais10">Policial Militar / Bombeiro Militar com mais de 10 anos de serviço</option>
+            <option value="pm-bm-menos10">Policial Militar / Bombeiro Militar com menos de 10 anos de serviço</option>
+          </optgroup>
+
+          <optgroup label="── Autoridades Policiais">
+            <option value="autoridade-policial-est">Autoridade policial civil estadual (fora do Município da candidatura)</option>
+            <option value="autoridade-policial-mun">Autoridade policial civil ou militar em exercício no Município da candidatura</option>
+            <option value="dir-dpf">Diretor-Geral da Polícia Federal</option>
+          </optgroup>
+
+          <optgroup label="── Comunicação Social">
+            <option value="comunicador-tv-radio">Apresentador / comentarista de rádio ou TV (atividade privada)</option>
+            <option value="comunicador-jornal">Jornalista / colunista de jornal ou plataforma digital (atividade privada)</option>
+            <option value="comunicador-servidor">Comunicador que também é servidor público</option>
+          </optgroup>
+
+          <optgroup label="── Líderes Religiosos">
+            <option value="pastor-sem-convenio">Pastor / padre / líder religioso — instituição SEM contrato/convênio com repasse financeiro público</option>
+            <option value="pastor-com-convenio">Pastor / padre / líder religioso — dirige entidade COM contrato/convênio com repasse financeiro público</option>
+          </optgroup>
+
+          <optgroup label="── Sindicatos e Entidades de Classe">
+            <option value="dirigente-sindical-contrib">Dirigente sindical — sindicato mantido com contribuição compulsória / recurso público</option>
+            <option value="dirigente-sindical-volunt">Dirigente sindical — sindicato mantido apenas com contribuição voluntária (pós-Reforma 2017)</option>
+            <option value="membro-sindical">Membro / associado de sindicato (sem função de direção, administração ou representação)</option>
+            <option value="dirigente-classe-contrib">Dirigente de entidade de classe (CRM, CREA, OAB etc.) custeada por contribuição compulsória / pública</option>
+          </optgroup>
+
+          <optgroup label="── Mandatários Eletivos">
+            <option value="vereador">Vereador</option>
+            <option value="dep-estadual-atual">Deputado Estadual / Distrital (mandato em curso)</option>
+            <option value="dep-federal-atual">Deputado Federal (mandato em curso)</option>
+            <option value="senador-atual">Senador Federal (mandato em curso)</option>
+          </optgroup>
+
+          <optgroup label="── Empresas e Contratos com o Poder Público">
+            <option value="dir-empresa-contrato">Diretor / representante de empresa com contrato de obras, serviços ou fornecimento com o poder público</option>
+            <option value="dir-financeira">Presidente / Diretor de sociedade de operações financeiras com captação pública</option>
+          </optgroup>
+
+        </select>
+      </div>
+
+      <!-- PASSO 2: CARGO PRETENDIDO -->
+      <div class="form-group full" id="grp-pretendido">
+        <label for="cargo-pretendido">Cargo eletivo pretendido</label>
+        <select id="cargo-pretendido" class="select-locked">
+          <option value="">— selecione o cargo acima primeiro —</option>
+          <option value="presidente-vp">Presidente / Vice-Presidente da República</option>
+          <option value="governador-vg">Governador / Vice-Governador</option>
+          <option value="senador">Senador Federal</option>
+          <option value="dep-federal">Deputado Federal</option>
+          <option value="dep-estadual">Deputado Estadual / Distrital</option>
+          <option value="prefeito-vp">Prefeito / Vice-Prefeito</option>
+          <option value="vereador">Vereador</option>
+        </select>
+      </div>
+
+      <button class="btn-consultar" onclick="consultar()">Consultar</button>
+    </div>
+  </div>
+
+  <div class="result-card" id="result-card">
+    <div id="result-inner"></div>
+  </div>
+
+  <!-- ══ CARD CONTAGEM DE PRAZO (autônomo, flutua sobre o off) ══ -->
+  <div class="prazo-card">
+    <p class="prazo-card-title">Contagem de Prazo</p>
+    <p class="prazo-card-text">
+      Os prazos são contados <strong>regressivamente a partir da data do 1º turno</strong> (primeiro domingo de outubro do ano eleitoral).
+      Para as <strong>Eleições Gerais de 2026</strong> (1º turno em <strong>4/10/2026</strong>):
+      prazo de <strong>6 meses</strong> = afastamento até <strong>4/4/2026</strong> ·
+      prazo de <strong>4 meses</strong> = até <strong>4/6/2026</strong> ·
+      prazo de <strong>3 meses</strong> = até <strong>4/7/2026</strong>.
+      Quando a data-limite recai em dia não útil, o TSE admite o afastamento no primeiro dia útil subsequente
+      (TSE, AgR-REspe nºs de 3/9/2014 e 25/11/2010).
+      O afastamento deve ser <em>de fato e de direito</em>: não basta a comunicação formal sem o efetivo desligamento das funções.
+    </p>
+  </div>
+
+  <!-- ══ RODAPÉ ══ -->
+  <footer>
+
+    <div class="footer-aviso">
+      <strong>Aviso:</strong> Esta ferramenta tem finalidade exclusivamente informativa e não substitui assessoria jurídica individualizada.
+      A ausência de determinada hipótese não significa que a desincompatibilização é dispensada.
+      Os entendimentos jurisprudenciais podem sofrer alterações em julgamentos futuros.
+      Para consulta direta ao sistema do TSE, acesse:
+      <a href="https://www.tse.jus.br/servicos-eleitorais/desincompatibilizacao" target="_blank" rel="noopener">tse.jus.br/desincompatibilizacao</a>.<br><br>
+      <strong>Fontes:</strong> LC 64/1990 (alt. LC 135/2010 e LC 219/2025) · CF/1988, art. 14, §§ 5º–8º · Lei 9.504/1997, arts. 45, § 1º e 36-A, §§ 2º–3º · Lei 8.112/1990, art. 94 · Lei 6.880/1980 · Res. TSE 23.609/2019, art. 9º-A · Súmula TSE 54 · TSE, Temas Selecionados — Desincompatibilização e Afastamentos.
+    </div>
+
+    <div class="footer-firma">
+      Monteiro e Monteiro Advogados Associados ·
+      <a href="mailto:novo@monteiro.adv.br" style="color:var(--verde);text-decoration:none">novo@monteiro.adv.br</a> ·
+      <a href="tel:+5581991950063" style="color:var(--prata);text-decoration:none">(81) 99195-0063</a> ·
+      <a href="https://www.monteiro.adv.br" target="_blank" rel="noopener" style="color:var(--prata);text-decoration:none">www.monteiro.adv.br</a>
+    </div>
+
+  </footer>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   BASE DE REGRAS
+   ═══════════════════════════════════════════════════════════════ */
+const regras = [
+
+  /* ── PRESIDENTE ───────────────────────────────────────────── */
+  { cargo:["presidente"], pretendido:["presidente-vp"],
+    tipo:"Sem afastamento (reeleição)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Presidente da República candidato à própria reeleição não precisa renunciar nem se afastar do cargo.",
+    device:"CF/1988, art. 14, § 5º; LC 64/1990, art. 1º, § 1º (a contrario sensu)", obs:null },
+
+  { cargo:["presidente"], pretendido:["governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Renúncia ao mandato", badgeClass:"badge-renuncia", prazo:"6 meses antes do pleito",
+    desc:"O Presidente da República que pretenda concorrer a cargo diverso deve renunciar ao mandato com antecedência mínima de 6 meses do pleito. A renúncia para fins de candidatura legítima não gera a inelegibilidade do art. 1º, I, 'k', salvo se a Justiça Eleitoral reconhecer fraude.",
+    device:"LC 64/1990, art. 1º, § 1º; art. 1º, I, 'k' e § 5º (redação da LC 219/2025)",
+    obs:"Renúncia posterior a representação capaz de autorizar processo por infringência constitucional gera inelegibilidade de 8 anos (art. 1º, I, 'k')." },
+
+  /* ── VICE-PRESIDENTE ──────────────────────────────────────── */
+  { cargo:["vice-presidente"], pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem afastamento (regra geral)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Vice-Presidente pode candidatar-se a outros cargos preservando o mandato, desde que não tenha sucedido ou substituído o Presidente nos 6 meses anteriores ao pleito.",
+    device:"LC 64/1990, art. 1º, § 2º",
+    obs:"Se tiver substituído o Presidente nos 6 meses anteriores ao pleito, aplicam-se as regras do Presidente (renúncia com 6 meses de antecedência)." },
+
+  /* ── GOVERNADOR ───────────────────────────────────────────── */
+  { cargo:["governador"], pretendido:["governador-vg"],
+    tipo:"Sem afastamento (reeleição)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Governador candidato à própria reeleição não precisa renunciar ao mandato.",
+    device:"CF/1988, art. 14, § 5º; LC 64/1990, art. 1º, § 1º (a contrario sensu)", obs:null },
+
+  { cargo:["governador"], pretendido:["presidente-vp","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Renúncia ao mandato", badgeClass:"badge-renuncia", prazo:"6 meses antes do pleito",
+    desc:"O Governador que pretenda concorrer a cargo diverso deve renunciar ao mandato 6 meses antes do pleito.",
+    device:"LC 64/1990, art. 1º, § 1º; § 5º (redação da LC 219/2025)",
+    obs:"A renúncia para fins de candidatura legítima não gera inelegibilidade (art. 1º, § 5º)." },
+
+  /* ── VICE-GOVERNADOR ──────────────────────────────────────── */
+  { cargo:["vice-governador"], pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem afastamento (regra geral)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Vice-Governador pode candidatar-se a outros cargos preservando o mandato, desde que não tenha sucedido ou substituído o Governador nos 6 meses anteriores ao pleito.",
+    device:"LC 64/1990, art. 1º, § 2º",
+    obs:"Se tiver substituído o Governador nos 6 meses anteriores ao pleito, aplicam-se as regras de renúncia do Governador." },
+
+  /* ── PREFEITO ─────────────────────────────────────────────── */
+  { cargo:["prefeito"], pretendido:["prefeito-vp"],
+    tipo:"Sem afastamento (reeleição)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Prefeito candidato à própria reeleição não precisa renunciar ao mandato.",
+    device:"CF/1988, art. 14, § 5º; LC 64/1990, art. 1º, § 1º (a contrario sensu)", obs:null },
+
+  { cargo:["prefeito"], pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","vereador"],
+    tipo:"Renúncia ao mandato", badgeClass:"badge-renuncia", prazo:"6 meses antes do pleito",
+    desc:"O Prefeito que pretenda concorrer a cargo diverso deve renunciar ao mandato 6 meses antes do pleito.",
+    device:"LC 64/1990, art. 1º, § 1º; § 5º (redação da LC 219/2025)",
+    obs:"A renúncia para fins de candidatura legítima não gera inelegibilidade (art. 1º, § 5º)." },
+
+  /* ── VICE-PREFEITO ────────────────────────────────────────── */
+  { cargo:["vice-prefeito"], pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem afastamento (regra geral)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Vice-Prefeito pode candidatar-se a outros cargos preservando o mandato, desde que não tenha sucedido ou substituído o Prefeito nos 6 meses anteriores ao pleito.",
+    device:"LC 64/1990, art. 1º, § 2º",
+    obs:"Se tiver substituído o Prefeito nos 6 meses anteriores ao pleito, aplicam-se as regras de renúncia do Prefeito." },
+
+  /* ── MINISTROS / CHEFIAS FEDERAIS ────────────────────────── */
+  { cargo:["ministro","chefe-assessoria","adv-geral","sec-geral-min","pres-autarquia-fed","tcu-membro","dir-dpf","interventor","dir-financeira"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Os titulares dos cargos listados no art. 1º, II, 'a', da LC 64/1990 devem afastar-se definitivamente das funções pelo menos 6 meses antes do pleito para concorrer a qualquer cargo eletivo.",
+    device:"LC 64/1990, art. 1º, II, 'a', itens 1–16; art. 1º, III, 'a'; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI",
+    obs:"O afastamento deve ser definitivo; mera licença ou colocação à disposição não é suficiente." },
+
+  /* ── SECRETÁRIO DE ESTADO ─────────────────────────────────── */
+  { cargo:["sec-estado","chefe-gabinete-gov","dir-org-estadual"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Secretários de Estado, chefes dos Gabinetes Civil e Militar do Governador e diretores de órgãos estaduais de assistência a municípios devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura.",
+    device:"LC 64/1990, art. 1º, III, 'b', itens 1–4; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI",
+    obs:null },
+
+  /* ── SECRETÁRIO MUNICIPAL ─────────────────────────────────── */
+  { cargo:["sec-municipal"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Secretários municipais devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura. A nomenclatura do cargo é irrelevante: o que importa é a competência efetivamente exercida (TSE, AgR-REspEl nº 060025489/2021).",
+    device:"LC 64/1990, art. 1º, III, 'b', item 4; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI",
+    obs:"Cargo designado como 'secretário adjunto' que substitui o titular e executa as políticas da pasta foi equiparado a Secretário Municipal pelo TSE." },
+
+  /* ── AUTARQUIAS ESTADUAIS E MUNICIPAIS ───────────────────── */
+  { cargo:["pres-autarquia-est","pres-autarquia-mun","tce-membro"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Presidentes, diretores e superintendentes de autarquias, EP, SEM e fundações estaduais ou municipais devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura.",
+    device:"LC 64/1990, art. 1º, II, 'a', item 9; art. 1º, III, 'a'; art. 1º, IV, 'a'", obs:null },
+
+  /* ── MAGISTRADO ───────────────────────────────────────────── */
+  { cargo:["magistrado"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Magistrados (federais ou estaduais) devem afastar-se definitivamente 6 meses antes do pleito para concorrer a qualquer cargo eletivo.",
+    device:"LC 64/1990, art. 1º, II, 'a', item 8; art. 1º, III, 'a'; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI", obs:null },
+
+  /* ── MP FEDERAL ───────────────────────────────────────────── */
+  { cargo:["mp-federal","mp-estadual"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Membros do Ministério Público (federal ou estadual) devem afastar-se 6 meses antes do pleito para candidaturas a cargos federais ou estaduais.",
+    device:"LC 64/1990, art. 1º, II, 'j'; art. 1º, III, 'a'; art. 1º, V, 'a'; art. 1º, VI", obs:null },
+
+  { cargo:["mp-federal","mp-estadual","mp-comarca"],
+    pretendido:["prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Membros do MP em exercício na Comarca devem afastar-se 6 meses antes do pleito para candidatura a cargos municipais, com garantia dos vencimentos integrais.",
+    device:"LC 64/1990, art. 1º, IV, 'b' (redação da LC 219/2025)", obs:null },
+
+  /* ── DEFENSORIA ───────────────────────────────────────────── */
+  { cargo:["defensor"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Membros da Defensoria Pública (federal ou estadual) devem afastar-se 6 meses antes do pleito para qualquer candidatura. A jurisprudência do TSE os equipara aos membros do MP para fins de desincompatibilização. <strong>Atenção:</strong> essa extensão analógica não tem assento expresso na LC 64/1990 — a LC 219/2025 trata do MP no art. 1º, IV, 'b', mas a situação da Defensoria continua dependendo de construção jurisprudencial, sujeita a confirmação definitiva pelo TSE para as eleições de 2026.",
+    device:"LC 64/1990, art. 1º, IV, 'b' c/c art. 1º, II, 'j' por analogia (interpretação extensiva — sem previsão expressa na LC 64/1990); jurisprudência TSE",
+    obs:"Recomenda-se acompanhar a jurisprudência do TSE especificamente para as Eleições 2026, pois a equiparação da Defensoria ao MP para fins de desincompatibilização decorre de construção pretoriana ainda não consolidada em tese de repercussão geral ou súmula." },
+
+  /* ── SERVIDOR EFETIVO ─────────────────────────────────────── */
+  { cargo:["servidor-efetivo-fed","servidor-efetivo-est","servidor-efetivo-mun"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Licença remunerada (afastamento temporário)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"Servidores públicos efetivos (estatutários) devem afastar-se de fato 3 meses antes do pleito. O afastamento é remunerado: os vencimentos integrais são garantidos durante o período e o servidor pode ser prorrogado por até 10 dias após o segundo turno se dele participar. O cargo efetivo fica preservado; o servidor retorna ao posto ao término do mandato ou se não for eleito.",
+    device:"LC 64/1990, art. 1º, II, 'l' (redação da LC 219/2025); CF/1988, art. 38, III; Lei 8.112/1990, art. 94",
+    obs:"O afastamento deve ser de fato e de direito. Colocação à disposição de outro setor não configura desincompatibilização (TSE, RO 559/2002). Retorno imediato obrigatório se o registro não for formalizado ou for cassado (LC 64/1990, art. 1º, § 7º — LC 219/2025)." },
+
+  /* ── COMISSIONADO PURO (SEM VÍNCULO EFETIVO) ─────────────── */
+  { cargo:["comissionado-puro-fed","comissionado-puro-est","comissionado-puro-mun"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Exoneração obrigatória (sem remuneração no período)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"O servidor exclusivamente comissionado (sem cargo efetivo subjacente) deve ser exonerado do cargo comissionado pelo menos 3 meses antes do pleito — não basta o afastamento de fato (Súmula TSE 54). Diferentemente do servidor efetivo, não há direito a remuneração durante o período de afastamento pré-eleitoral, uma vez que o cargo em comissão é de livre nomeação e exoneração.",
+    device:"LC 64/1990, art. 1º, II, 'l'; Súmula TSE 54; TSE, Res. nº 20135/1998 (Cta 401) — sem remuneração para comissionados puros",
+    obs:"A Súmula TSE 54 é taxativa: a desincompatibilização pressupõe a exoneração, não apenas o afastamento de fato. A ausência de cargo efetivo afasta o direito à remuneração durante o período (TSE, Cta 401/1998)." },
+
+  /* ── EFETIVO EM COMISSÃO ──────────────────────────────────── */
+  { cargo:["efetivo-em-comissao"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Exoneração da comissão + licença remunerada do efetivo", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"O servidor que possui cargo efetivo e ocupa, cumulativamente, cargo em comissão deve: (1) ser exonerado do cargo comissionado (Súmula TSE 54) e (2) afastar-se de fato do cargo efetivo, garantida a remuneração integral do cargo efetivo durante os 3 meses anteriores ao pleito.",
+    device:"LC 64/1990, art. 1º, II, 'l'; Súmula TSE 54; Lei 8.112/1990, art. 94",
+    obs:"A exoneração da comissão é condição indispensável; não basta o mero afastamento do cargo comissionado. A remuneração do período é a do cargo efetivo (não do comissionado)." },
+
+  /* ── SERVIDOR TEMPORÁRIO / CLT ───────────────────────────── */
+  { cargo:["servidor-temp"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Afastamento (3 meses) — sem remuneração garantida", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"Servidores contratados temporariamente (art. 37, IX, CF) e empregados públicos (CLT) estão sujeitos à regra geral do art. 1º, II, 'l', da LC 64/1990, devendo afastar-se 3 meses antes do pleito. A garantia de remuneração integral aplica-se apenas aos estatutários efetivos; contratados temporários devem afastar-se de fato, mas a proteção remuneratória depende da legislação específica do ente.",
+    device:"LC 64/1990, art. 1º, II, 'l'; TSE, REspe nº 72793/2014 (professora temporária); AgR-REspEl nº 060030736/2021",
+    obs:"A exigência de afastamento se aplica mesmo a professora temporária escolhida para vaga remanescente (TSE, REspe 72793/2014). O prazo é improrrogável e não comporta mitigação." },
+
+  /* ── PROFESSOR EFETIVO ────────────────────────────────────── */
+  { cargo:["professor-efetivo"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Licença remunerada (afastamento temporário)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"Professor de escola ou universidade pública com cargo efetivo sujeita-se à regra geral dos servidores efetivos: deve afastar-se de fato e de direito das atividades do magistério 3 meses antes do pleito, com garantia dos vencimentos integrais. Declaração de afastamento assinada apenas pela vice-diretora da escola, sem comprovação do desligamento efetivo, foi considerada insuficiente pelo TSE.",
+    device:"LC 64/1990, art. 1º, II, 'l'; TSE, AgRgRO nº 1148/2006; AgR-REspe nº 11040/2012 (professor estadual de Pernambuco)",
+    obs:"O afastamento deve ser de fato: o professor que continuou exercendo normalmente as atividades do magistério após a comunicação formal teve o registro indeferido (TSE, AgR-REspe 11040/2012)." },
+
+  /* ── PROFESSOR TEMPORÁRIO ─────────────────────────────────── */
+  { cargo:["professor-temp"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Afastamento (3 meses)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"Professor contratado temporariamente em escola ou universidade pública deve afastar-se 3 meses antes do pleito. A proteção remuneratória do período depende da legislação específica do ente contratante; não há garantia constitucional de remuneração integral como no caso do servidor efetivo.",
+    device:"LC 64/1990, art. 1º, II, 'l'; TSE, REspe nº 72793/2014; AgR-REspEl nº 060030736/2021",
+    obs:"Não incide a Súmula TSE 54 (que exige exoneração) em relação a professor temporário: basta o afastamento de fato, comprovado documentalmente (TSE, AgR-REspEl 060030736/2021)." },
+
+  /* ── REITOR ───────────────────────────────────────────────── */
+  { cargo:["reitor"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Reitores de universidades públicas federais ou estaduais (natureza autárquica ou fundacional) são equiparados a presidentes de autarquias para fins de desincompatibilização e devem afastar-se definitivamente 6 meses antes do pleito.",
+    device:"LC 64/1990, art. 1º, II, 'a', item 9; art. 1º, III, 'a'; art. 1º, IV, 'a'; TSE — Desincompatibilização, reitor de universidade pública", obs:null },
+
+  /* ── MILITARES FA > 10 ANOS ───────────────────────────────── */
+  { cargo:["militar-fa-mais10"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Agregação a partir do requerimento do registro", badgeClass:"badge-militar",
+    prazo:"A partir do requerimento do registro de candidatura",
+    desc:"O militar das FA com mais de 10 anos de serviço que não ocupa cargo expressamente listado na LC 64/1990 será agregado pela autoridade superior a partir do requerimento do registro de candidatura — não do seu deferimento. Se eleito, passa automaticamente à inatividade no ato da diplomação; se não eleito, retorna ao serviço ativo. Não se submete ao prazo de 3 meses do art. 1º, II, 'l', da LC 64/1990, que é norma aplicável a servidores civis, não a militares sem cargo taxativamente listado.",
+    device:"CF/1988, art. 14, § 8º, II; Lei 6.880/1980, art. 82, XVI e § 4º; TSE, Cta nº 060106664/2018 (marco: requerimento do registro); REspe 30182/2008; REspe 30516/2016; RO-El nº 060065566/2022",
+    obs:"Atenção ao marco temporal: o TSE fixou que o afastamento ocorre a partir do <strong>requerimento</strong> do registro, pois com a reforma da Lei Eleitoral de 2009 a condição de candidato é obtida com a formalização do pedido, não com o seu deferimento (TSE, Cta nº 060106664/2018, rel. Min. Napoleão Nunes Maia Filho). As normas de desincompatibilização de militares são interpretadas restritivamente pelo TSE: é inapropriada a extensão analógica para cargos não descritos expressamente na LC 64/1990 (TSE, AgR-RO nº 060086596/2018, rel. Min. Barroso)." },
+
+  /* ── COMANDANTE DAS FA / CHEFE EMFA / ZONA ─────────────────── */
+  { cargo:["cmte-forcas-armadas"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Comandantes do Exército, Marinha e Aeronáutica devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura.",
+    device:"LC 64/1990, art. 1º, II, 'a', itens 6 e 7; art. 1º, III, 'a'; art. 1º, IV, 'a'", obs:null },
+
+  { cargo:["cmte-zona"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"O Chefe do Estado-Maior das Forças Armadas e os Comandantes de Distrito Naval, Região Militar e Zona Aérea são militares <strong>federais</strong> listados expressamente na LC 64/1990 e devem afastar-se definitivamente 6 meses antes do pleito. O art. 1º, II, 'a', item 4, contempla o Chefe do EMFA; o art. 1º, III, 'b', item 2, trata especificamente dos Comandantes de Zona no contexto da inelegibilidade para cargos estaduais — a inserção deste dispositivo no inciso III não altera a natureza federal dos titulares nem o prazo de 6 meses aplicável.",
+    device:"LC 64/1990, art. 1º, II, 'a', item 4 (Chefe do EMFA); art. 1º, III, 'b', item 2 (Comandantes de Zona — inelegibilidade para cargos estaduais); art. 1º, IV, 'a'",
+    obs:"Atenção: esses cargos pertencem às Forças Armadas (esfera federal), não às polícias militares estaduais. A inserção no art. 1º, III, da LC 64/1990 diz respeito ao âmbito da inelegibilidade (cargos estaduais), não à natureza federativa do cargo." },
+  { cargo:["militar-fa-menos10"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Afastamento definitivo irreversível (demissão / licenciamento ex officio)", badgeClass:"badge-militar",
+    prazo:"A partir do requerimento do registro de candidatura",
+    desc:"O militar das FA com menos de 10 anos de serviço deve afastar-se definitivamente — por demissão (oficiais) ou licenciamento ex officio (graduados) — para concorrer a qualquer cargo eletivo. O afastamento ocorre a partir do <strong>requerimento</strong> do registro de candidatura, não do seu deferimento. Independentemente do resultado eleitoral, deixa definitivamente a corporação.",
+    device:"CF/1988, art. 14, § 8º, I; Lei 6.880/1980, arts. 97 e ss.; Res. TSE 23.609/2019, art. 9º-A; TSE, Cta nº 060106664/2018 (marco: requerimento)",
+    obs:"O afastamento é definitivo e irreversível: o militar com menos de 10 anos não poderá ser reintegrado, qualquer que seja o resultado eleitoral. O marco temporal é o <strong>requerimento</strong> do registro — pois é com a formalização do pedido que se adquire a condição de candidato (TSE, Cta nº 060106664/2018, rel. Min. Napoleão Nunes Maia Filho)." },
+
+  /* ── PM/BM > 10 ANOS ──────────────────────────────────────── */
+  { cargo:["pm-bm-mais10"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Agregação a partir do requerimento do registro", badgeClass:"badge-militar",
+    prazo:"A partir do requerimento do registro de candidatura",
+    desc:"O PM ou BM com mais de 10 anos de serviço sem ocupar cargo expressamente listado na LC 64/1990 será agregado a partir do <strong>requerimento</strong> do registro de candidatura — não do seu deferimento. Se eleito, passa à inatividade na diplomação; se não eleito, retorna ao serviço ativo.",
+    device:"CF/1988, art. 14, § 8º, II; aplicação analógica aos militares estaduais — TSE, jurisprudência consolidada; TSE, Cta nº 060106664/2018 (marco: requerimento)",
+    obs:"A regra do art. 1º, IV, 'c', da LC 64/1990 (inelegibilidade de autoridade policial no Município) aplica-se adicionalmente para candidaturas municipais. O marco temporal do requerimento, fixado pelo TSE para militares das FA (Cta nº 060106664/2018), aplica-se por analogia aos militares estaduais." },
+
+  /* ── PM/BM < 10 ANOS ──────────────────────────────────────── */
+  { cargo:["pm-bm-menos10"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Afastamento definitivo irreversível (demissão / licenciamento)", badgeClass:"badge-militar",
+    prazo:"A partir do requerimento do registro de candidatura",
+    desc:"O PM ou BM com menos de 10 anos de serviço deve afastar-se definitivamente por demissão ou licenciamento ex officio para concorrer a qualquer cargo eletivo. O afastamento ocorre a partir do <strong>requerimento</strong> do registro de candidatura e é irreversível.",
+    device:"CF/1988, art. 14, § 8º, I; Res. TSE 23.609/2019, art. 9º-A; TSE, Cta nº 060106664/2018 (marco: requerimento — aplicação analógica); precedentes TRE (Eleições 2024)",
+    obs:"Independentemente do resultado eleitoral, o PM/BM com menos de 10 anos não poderá ser reintegrado." },
+
+  /* ── AUTORIDADE POLICIAL ESTADUAL ─────────────────────────── */
+  { cargo:["autoridade-policial-est"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
+    tipo:"Licença / Afastamento (3 meses)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"Autoridade policial civil estadual fora do município da candidatura submete-se à regra geral dos servidores públicos: afastamento de 3 meses antes do pleito.",
+    device:"LC 64/1990, art. 1º, II, 'l' c/c art. 1º, III, 'a'", obs:null },
+
+  { cargo:["autoridade-policial-est"],
+    pretendido:["prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Autoridade policial em exercício no Município da candidatura (ainda que de esfera estadual) deve afastar-se definitivamente 6 meses antes do pleito para candidatura a Prefeito, Vice-Prefeito ou Vereador.",
+    device:"LC 64/1990, art. 1º, IV, 'c' (redação da LC 219/2025)",
+    obs:"A restrição vincula-se ao exercício da função no Município da candidatura." },
+
+  /* ── AUTORIDADE POLICIAL MUNICIPAL ───────────────────────── */
+  { cargo:["autoridade-policial-mun"],
+    pretendido:["prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Autoridades policiais (civis ou militares) em exercício no Município devem afastar-se definitivamente 6 meses antes do pleito para candidatura a Prefeito, Vice-Prefeito ou Vereador.",
+    device:"LC 64/1990, art. 1º, IV, 'c' (redação da LC 219/2025)", obs:null },
+
+  { cargo:["autoridade-policial-mun"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
+    tipo:"Licença / Afastamento (3 meses)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
+    desc:"Para candidaturas a cargos federais ou estaduais, autoridade policial municipal sujeita-se à regra geral dos servidores: afastamento de 3 meses antes do pleito.",
+    device:"LC 64/1990, art. 1º, II, 'l' c/c art. 1º, III, 'a'", obs:null },
+
+  /* ── DIR-DPF ──────────────────────────────────────────────── */
+  { cargo:["dir-dpf"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"O Diretor-Geral da Polícia Federal está expressamente listado no art. 1º, II, 'a', da LC 64/1990 e deve afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura.",
+    device:"LC 64/1990, art. 1º, II, 'a', item 15; art. 1º, III, 'a'; art. 1º, IV, 'a'", obs:null },
+
+  /* ══════════════════════════════════════════════════════════════
+     COMUNICADORES
+     ══════════════════════════════════════════════════════════════ */
+
+  { cargo:["comunicador-tv-radio"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem desincompatibilização (LC 64/90) — vedação da Lei 9.504/97", badgeClass:"badge-comunicador",
+    prazo:"A partir da convenção partidária",
+    desc:"A LC 64/1990 NÃO prevê hipótese de desincompatibilização específica para apresentador ou comentarista de rádio ou TV pela mera qualidade de comunicador. Portanto, enquanto pré-candidato ainda não escolhido em convenção, NÃO há prazo de afastamento formal. Contudo, duas regras da Lei 9.504/1997 incidem com especial rigor: (1) após a escolha em convenção, fica VEDADO à emissora transmitir programa apresentado ou comentado pelo candidato — a vedação independe de o programa ter conteúdo eleitoral (art. 45, § 1º); (2) ANTES da convenção, o profissional de comunicação em exercício da profissão está proibido de fazer promoção pessoal ou divulgar ações políticas no programa, sob pena de propaganda eleitoral antecipada e multa — regra mais severa do que a aplicável a outros pré-candidatos (art. 36-A, §§ 2º e 3º).",
+    device:"Lei 9.504/1997, art. 45, § 1º (vedação à emissora após convenção); art. 36-A, §§ 2º e 3º (promoção pessoal — pré-candidato profissional de comunicação); TSE, AgR-AREspE 060004265/2025; AgR-AREspE 060005127/2025; AgR-AREspE 060006860/2025",
+    obs:"O descumprimento do art. 45, § 1º pela emissora sujeita-a a multa de R$ 21.282,00 a R$ 106.410,00 (duplicada em reincidência) e pode acarretar o cancelamento do registro de candidatura do beneficiário. A norma não diferencia profissional da mídia de professor universitário com programa de TV: basta a condição de candidato convencido (TSE, REspe 28400/2008). Se o comunicador for também servidor público, deve observar os prazos de desincompatibilização do cargo público." },
+
+  { cargo:["comunicador-jornal"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem desincompatibilização (LC 64/90) — atenção ao art. 36-A, § 3º", badgeClass:"badge-comunicador",
+    prazo:"—",
+    desc:"Jornalistas e colunistas de jornal impresso ou plataforma digital NÃO estão sujeitos à vedação do art. 45, § 1º, da Lei 9.504/1997, que se restringe expressamente a emissoras de rádio e televisão. Tampouco há desincompatibilização prevista na LC 64/1990 pela qualidade de jornalista. Todavia, se o jornalista for pré-candidato e divulgar ou exaltar ações políticas próprias no exercício da profissão, pode incidir o art. 36-A, § 3º (vedação de promoção pessoal por profissional de comunicação social), conforme interpretação extensiva ainda não pacificada pelo TSE para a mídia impressa.",
+    device:"Lei 9.504/1997, art. 45, § 1º (restrição apenas a emissoras); art. 36-A, § 3º; LC 64/1990, art. 1º, II, 'l' (inaplicável pela qualidade de jornalista)",
+    obs:"Caso o jornalista acumule cargo público (ex.: professor ou servidor público), a desincompatibilização do cargo público é obrigatória nos prazos da LC 64/1990. A ausência de vedação expressa para jornal não afasta o risco de representação por abuso dos meios de comunicação (LC 64/1990, art. 22)." },
+
+  { cargo:["comunicador-servidor"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização do cargo público (3 ou 6 meses) + vedação da Lei 9.504", badgeClass:"badge-comunicador",
+    prazo:"Conforme o cargo público (3 ou 6 meses) + vedação a partir da convenção",
+    desc:"O comunicador que também ocupa cargo público (servidor, professor, dirigente de autarquia etc.) está sujeito a dois regimes simultâneos: (1) desincompatibilização do cargo público no prazo exigido pela LC 64/1990, conforme a natureza do cargo; e (2) vedação à emissora de transmitir seu programa após a convenção (art. 45, § 1º, Lei 9.504/1997) e proibição de promoção pessoal antes da convenção (art. 36-A, § 3º).",
+    device:"LC 64/1990, art. 1º, II, 'l' (ou prazo específico do cargo); Lei 9.504/1997, art. 45, § 1º; art. 36-A, §§ 2º e 3º",
+    obs:"A desincompatibilização do cargo público ocorre de forma independente da atividade comunicacional. Consulte a regra específica do cargo público acumulado para verificar o prazo aplicável." },
+
+  /* ══════════════════════════════════════════════════════════════
+     LÍDERES RELIGIOSOS
+     ══════════════════════════════════════════════════════════════ */
+
+  { cargo:["pastor-sem-convenio"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem desincompatibilização (regra geral)", badgeClass:"badge-religioso",
+    prazo:"—",
+    desc:"Pastor, padre ou líder religioso cuja instituição não possui contrato ou convênio com efetivo repasse financeiro do poder público NÃO está sujeito a qualquer prazo de desincompatibilização previsto na LC 64/1990. A atividade religiosa privada não se enquadra nas hipóteses taxativas dos incisos II a VII do art. 1º. Acordos de cooperação técnica gratuitos, cessões de uso de imóvel público e doações para eventos isolados também não atraem a inelegibilidade, conforme tese fixada pelo TSE.",
+    device:"LC 64/1990, art. 1º — hipóteses taxativas; TSE, AgR-REspEl nº 060009815/2025 (cooperação técnica gratuita não equipara a convênio/contrato); TSE, REspe nº 38575/2012 (cessão de uso e doação para evento não enquadradas na LC 64/1990)",
+    obs:"Atenção ao eventual acúmulo com cargo público (servidor, professor etc.), que exige desincompatibilização própria. Verificar também se a instituição mantém instrumento com repasse financeiro do poder público — caso em que incide a regra abaixo." },
+
+  { cargo:["pastor-com-convenio"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-religioso", prazo:"6 meses antes do pleito",
+    desc:"Pastor, padre ou líder religioso que ocupa cargo de presidente, diretor ou administrador de entidade religiosa que mantém contrato ou convênio com <strong>efetivo repasse financeiro</strong> do poder público (saúde, assistência social, educação etc.) equipara-se ao dirigente de empresa contratada e deve afastar-se definitivamente 6 meses antes do pleito. A inelegibilidade exige contraprestação financeira real à entidade — instrumento meramente gratuito não basta.",
+    device:"LC 64/1990, art. 1º, II, 'i'; art. 1º, III, 'a'; IV, 'a'; TRE-RJ, RE nº 19162/2012; TSE, AgR-REspEl nº 060009815/2025 (tese: instrumento gratuito sem repasse não equipara a contrato/convênio para fins do art. 1º, II, 'i')",
+    obs:"<strong>Distinção determinante — natureza do instrumento:</strong> A incidência da inelegibilidade pressupõe (1) contrato ou convênio com <em>efetivo repasse de recursos financeiros</em> à entidade e (2) instrumento que não obedeça a cláusulas uniformes. <strong>Ficam fora da inelegibilidade:</strong> acordos de cooperação técnica gratuitos; cessões de uso de bem público; subvenções sociais sem contrato de prestação de serviços; doações para eventos isolados (TSE, AgR-REspEl nº 060009815/2025, rel. Min. Floriano de Azevedo Marques; REspe nº 38575/2012, rel. Min. Marco Aurélio). Essa distinção não é recomendação de cautela — ela é <strong>determinante</strong> para a incidência ou não da inelegibilidade, com tese jurisprudencial expressa do TSE fixada em 2025." },
+
+  /* ══════════════════════════════════════════════════════════════
+     SINDICATOS E ENTIDADES DE CLASSE
+     ══════════════════════════════════════════════════════════════ */
+
+  { cargo:["dirigente-sindical-contrib"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Dirigente (presidente, diretor, administrador ou representante) de sindicato mantido, total ou parcialmente, com contribuições impostas pelo poder público ou com recursos arrecadados e repassados pela Previdência Social deve afastar-se definitivamente 6 meses antes do pleito para candidatura a cargos federais ou estaduais.",
+    device:"LC 64/1990, art. 1º, II, 'g' (redação da LC 219/2025); art. 1º, III, 'a'; art. 1º, V, 'a'; art. 1º, VI",
+    obs:"O prazo era de 4 meses na redação original, mas a LC 219/2025 uniformizou o prazo para 6 meses. Suplente da diretoria também pode estar sujeito se efetivamente no exercício de funções de representação (TSE, REspe 10276/1992)." },
+
+  { cargo:["dirigente-sindical-contrib"],
+    pretendido:["prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Dirigente de sindicato mantido com recursos compulsórios ou previdenciários deve afastar-se definitivamente 6 meses antes do pleito para candidatura a cargos municipais.",
+    device:"LC 64/1990, art. 1º, II, 'g'; art. 1º, IV, 'a' (redação da LC 219/2025)",
+    obs:"A jurisprudência fixou prazo de 4 meses para pleito municipal antes da LC 219/2025 (TSE, Cta 163/1996). Com a nova redação, o prazo é de 6 meses." },
+
+  { cargo:["dirigente-sindical-volunt"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem desincompatibilização (contribuição voluntária)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"Após a Reforma Trabalhista (Lei 13.467/2017), que tornou a contribuição sindical voluntária, o TSE firmou entendimento de que o dirigente de sindicato de primeiro grau mantido exclusivamente com contribuições voluntárias não está sujeito ao art. 1º, II, 'g', da LC 64/1990, não sendo exigida a desincompatibilização.",
+    device:"LC 64/1990, art. 1º, II, 'g'; TSE, AgR-REspEl nº 0600473-80.2020.6.11.0046 (Eleições 2020, rel. Min. Sérgio Banhos)",
+    obs:"A isenção da desincompatibilização pressupõe que o sindicato seja mantido exclusivamente com contribuições voluntárias, sem qualquer recurso de natureza compulsória ou previdenciária. Recomenda-se análise cuidadosa da fonte de custeio." },
+
+  { cargo:["membro-sindical"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem desincompatibilização", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O simples membro ou associado de sindicato que não exerce função de direção, administração ou representação na entidade não está sujeito a qualquer prazo de desincompatibilização pelo vínculo sindical. O art. 1º, II, 'g', da LC 64/1990 alcança apenas quem exerce função de dirigente, administrador ou representante.",
+    device:"LC 64/1990, art. 1º, II, 'g'; TSE, Temas Selecionados — Sindicato: 'Se o membro sindical não exerce as funções de dirigente, administrador ou representante em entidade de classe mantida pelo poder público, não é exigível a desincompatibilização'",
+    obs:"A mera qualidade de sindicalizado, filiado ou delegado sindical sem função executiva não atrai a inelegibilidade. Verificar se há acúmulo com cargo público." },
+
+  { cargo:["dirigente-classe-contrib"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Dirigentes de entidades representativas de classe (CRM, CREA, OAB, CRO, conselhos regionais etc.) mantidas com contribuições compulsórias impostas pelo poder público devem afastar-se definitivamente 6 meses antes do pleito. A OAB foi expressamente enquadrada pelo TSE nessa hipótese.",
+    device:"LC 64/1990, art. 1º, II, 'g' (redação da LC 219/2025); TSE, AgR-REspe nº 26211/2017 e Cta nº 11187/2014 (OAB enquadrada); Res. TSE 16547/1990 (conselhos regionais — prazo nunca inferior a 4 meses, atualizado para 6 meses pela LC 219/2025)",
+    obs:"O prazo se aplica ao exercício de cargo de direção, administração ou representação — não à mera filiação ou associação à entidade." },
+
+  /* ══════════════════════════════════════════════════════════════
+     MANDATÁRIOS ELETIVOS EM EXERCÍCIO
+     ══════════════════════════════════════════════════════════════ */
+
+  { cargo:["vereador"],
+    pretendido:["vereador"],
+    tipo:"Sem afastamento (reeleição)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"O Vereador candidato à própria reeleição não precisa renunciar ao mandato.",
+    device:"CF/1988, art. 14, § 5º (a contrario sensu)", obs:null },
+
+  { cargo:["vereador","dep-estadual-atual","dep-federal-atual","senador-atual"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Sem desincompatibilização (mandatário eletivo legislativo)", badgeClass:"badge-nenhum", prazo:"—",
+    desc:"Parlamentares em exercício de mandato eletivo legislativo (Vereador, Deputado Estadual, Deputado Federal, Senador) podem concorrer a qualquer cargo eletivo sem renunciar ao mandato. A LC 64/1990 não prevê prazo de desincompatibilização para essa categoria.",
+    device:"CF/1988, art. 14, § 6º (in fine); LC 64/1990, art. 1º, I, 'k' (a contrario sensu para parlamentares)",
+    obs:"Verificar se incide inelegibilidade reflexa por parentesco (art. 1º, § 3º, LC 64/1990) ou qualquer outra causa de inelegibilidade do art. 1º, I." },
+
+  /* ══════════════════════════════════════════════════════════════
+     EMPRESAS E CONTRATOS
+     ══════════════════════════════════════════════════════════════ */
+
+  { cargo:["dir-empresa-contrato"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Quem tenha exercido cargo de direção, administração ou representação em pessoa jurídica ou empresa com contrato de execução de obras, prestação de serviços ou fornecimento de bens com o poder público nos 6 meses anteriores ao pleito incorre em inelegibilidade se não se afastar no prazo.",
+    device:"LC 64/1990, art. 1º, II, 'i'; art. 1º, III, 'a'; art. 1º, IV, 'a'",
+    obs:"Excetua-se o contrato celebrado mediante cláusulas uniformes (art. 1º, II, 'i', in fine)." },
+
+  { cargo:["dir-financeira"],
+    pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
+    desc:"Quem, até 6 meses depois de afastado, tenha exercido cargo de Presidente, Diretor ou Superintendente de sociedade com objetivos de operações financeiras que façam apelo público à poupança e ao crédito (cooperativas, bancos etc.) que gozem de vantagens asseguradas pelo poder público está sujeito à desincompatibilização.",
+    device:"LC 64/1990, art. 1º, II, 'h'; art. 1º, III, 'a'; art. 1º, IV, 'a'", obs:null },
+
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERFACE
+   ═══════════════════════════════════════════════════════════════ */
+
+function onCargoChange() {
+  const sel = document.getElementById("cargo-pretendido");
+  const cargo = document.getElementById("cargo-atual").value;
+
+  if (cargo) {
+    sel.classList.remove("select-locked");
+    // restaurar opção placeholder correta
+    sel.options[0].textContent = "— selecione o cargo pretendido —";
+    sel.value = "";
+  } else {
+    sel.classList.add("select-locked");
+    sel.options[0].textContent = "— selecione o cargo acima primeiro —";
+    sel.value = "";
+  }
+  // limpar resultado anterior
+  document.getElementById("result-card").className = "result-card";
+}
+
+function consultar() {
+  const cargo      = document.getElementById("cargo-atual").value;
+  const pretendido = document.getElementById("cargo-pretendido").value;
+  const card       = document.getElementById("result-card");
+  const inner      = document.getElementById("result-inner");
+
+  if (!cargo || !pretendido) {
+    card.className = "result-card show";
+    inner.innerHTML = '<div class="empty-msg">Preencha todos os campos para obter o resultado.</div>';
+    return;
+  }
+
+  const resultado = regras.find(r =>
+    r.cargo.includes(cargo) && r.pretendido.includes(pretendido)
+  );
+
+  if (!resultado) {
+    card.className = "result-card show";
+    inner.innerHTML = `
+      <div class="result-header">
+        <span class="badge badge-aviso">Hipótese não mapeada</span>
+        <p class="result-prazo" style="font-size:18px">Consulte o TSE</p>
+      </div>
+      <div class="result-body">
+        <p class="result-desc">A combinação selecionada não possui hipótese específica codificada nesta ferramenta.
+        Aplica-se, por identidade de situações, a regra de maior hierarquia da LC 64/1990 para o cargo mais próximo.
+        Recomenda-se consulta direta ao Portal do TSE:
+        <a href="https://www.tse.jus.br/servicos-eleitorais/desincompatibilizacao" target="_blank" rel="noopener">tse.jus.br/desincompatibilizacao</a>.</p>
+        <div class="device-block">
+          <div class="device-label">Referência base</div>
+          <div class="device-text">LC 64/1990, art. 1º — verificar hipótese por analogia com os incisos II a VII.</div>
+        </div>
+      </div>`;
+    card.className = "result-card show";
+    card.scrollIntoView({ behavior:"smooth", block:"nearest" });
+    return;
+  }
+
+  const obsHtml = resultado.obs
+    ? `<div class="obs-block"><div class="obs-label">Atenção</div><div class="obs-text">${resultado.obs}</div></div>`
+    : "";
+
+  inner.innerHTML = `
+    <div class="result-header">
+      <span class="badge ${resultado.badgeClass}">${resultado.tipo}</span>
+      <p class="result-prazo">${resultado.prazo}</p>
+      <p class="result-tipo">${resultado.tipo}</p>
+    </div>
+    <div class="result-body">
+      <p class="result-desc">${resultado.desc}</p>
+      <hr class="divider">
+      <div class="device-block">
+        <div class="device-label">Fundamento legal</div>
+        <div class="device-text">${resultado.device}</div>
+      </div>
+      ${obsHtml}
+    </div>`;
+
+  card.className = "result-card show";
+  card.scrollIntoView({ behavior:"smooth", block:"nearest" });
+}
+</script>
+</body>
+</html>
