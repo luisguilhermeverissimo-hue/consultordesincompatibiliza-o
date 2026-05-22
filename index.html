@@ -681,7 +681,7 @@ const regras = [
     tipo:"Sem afastamento (regra geral)", badgeClass:"badge-nenhum", prazo:"—",
     desc:"O Vice-Presidente pode candidatar-se a outros cargos preservando o mandato, desde que não tenha sucedido ou substituído o Presidente nos 6 meses anteriores ao pleito.",
     device:"LC 64/1990, art. 1º, § 2º",
-    obs:"Se tiver substituído o Presidente nos 6 meses anteriores ao pleito, aplicam-se as regras do Presidente (renúncia com 6 meses de antecedência)." },
+    obs:"<strong>Distinção essencial — substituição temporária × sucessão definitiva:</strong> Substituição meramente temporária (interinidade) não atrai a inelegibilidade; somente a sucessão definitiva ou a substituição que revele exercício pleno da gestão pública impõe as regras do titular (TSE, REspEl nº 060022490/2020, rel. Min. Luis Felipe Salomão; AgR-REspEl nº 060017586/2021, rel. Min. Alexandre de Moraes). Além disso, o Vice que assumiu interinamente nos 6 meses anteriores ainda pode candidatar-se ao cargo do titular, pois trata-se de reeleição — não de cargo diverso (TSE, Cta nº 689/2001)." },
 
   /* ── GOVERNADOR ───────────────────────────────────────────── */
   { cargo:["governador"], pretendido:["governador-vg"],
@@ -700,7 +700,7 @@ const regras = [
     tipo:"Sem afastamento (regra geral)", badgeClass:"badge-nenhum", prazo:"—",
     desc:"O Vice-Governador pode candidatar-se a outros cargos preservando o mandato, desde que não tenha sucedido ou substituído o Governador nos 6 meses anteriores ao pleito.",
     device:"LC 64/1990, art. 1º, § 2º",
-    obs:"Se tiver substituído o Governador nos 6 meses anteriores ao pleito, aplicam-se as regras de renúncia do Governador." },
+    obs:"<strong>Distinção essencial — substituição temporária × sucessão definitiva:</strong> Substituição meramente temporária (interinidade) não atrai a inelegibilidade; somente a sucessão definitiva ou a substituição que revele exercício pleno da gestão pública impõe as regras do Governador (TSE, REspEl nº 060022490/2020; AgR-REspEl nº 060017586/2021). O Vice que assumiu interinamente nos 6 meses ainda pode candidatar-se ao cargo do titular, tratando-se de reeleição (TSE, Cta nº 689/2001)." },
 
   /* ── PREFEITO ─────────────────────────────────────────────── */
   { cargo:["prefeito"], pretendido:["prefeito-vp"],
@@ -719,7 +719,7 @@ const regras = [
     tipo:"Sem afastamento (regra geral)", badgeClass:"badge-nenhum", prazo:"—",
     desc:"O Vice-Prefeito pode candidatar-se a outros cargos preservando o mandato, desde que não tenha sucedido ou substituído o Prefeito nos 6 meses anteriores ao pleito.",
     device:"LC 64/1990, art. 1º, § 2º",
-    obs:"Se tiver substituído o Prefeito nos 6 meses anteriores ao pleito, aplicam-se as regras de renúncia do Prefeito." },
+    obs:"<strong>Distinção essencial — substituição temporária × sucessão definitiva:</strong> Substituição meramente temporária não atrai a inelegibilidade; somente a sucessão definitiva ou o exercício pleno da gestão municipal impõe as regras do Prefeito (TSE, REspEl nº 060022490/2020; AgR-REspEl nº 060017586/2021). <strong>Atenção adicional:</strong> o Presidente da Câmara Municipal que assume a Prefeitura por dupla vacância nos 6 meses anteriores ao pleito também fica sujeito à inelegibilidade do art. 14, § 6º, da CF/1988, ainda que seu cargo de origem seja legislativo (TSE, REspEl nº 060038872/2021, rel. Min. Mauro Campbell Marques)." },
 
   /* ── MINISTROS / CHEFIAS FEDERAIS ────────────────────────── */
   { cargo:["ministro","chefe-assessoria","adv-geral","sec-geral-min","pres-autarquia-fed","tcu-membro","dir-dpf","interventor","dir-financeira"],
@@ -727,7 +727,7 @@ const regras = [
     tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
     desc:"Os titulares dos cargos listados no art. 1º, II, 'a', da LC 64/1990 devem afastar-se definitivamente das funções pelo menos 6 meses antes do pleito para concorrer a qualquer cargo eletivo.",
     device:"LC 64/1990, art. 1º, II, 'a', itens 1–16; art. 1º, III, 'a'; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI",
-    obs:"O afastamento deve ser definitivo; mera licença ou colocação à disposição não é suficiente." },
+    obs:"O afastamento deve ser definitivo; mera licença ou colocação à disposição não é suficiente. <strong>Critério material:</strong> o TSE equipara a Ministro de Estado autoridades que exercem funções ministeriais por designação normativa (como alguns Chefes de Secretaria Especial), independentemente da nomenclatura formal do cargo — o que impede tentativas de evasão por remodelagem formal de cargos (princípio aplicado analogicamente ao critério material firmado no AgR-REspEl nº 060025489/2021 para secretários municipais)." },
 
   /* ── SECRETÁRIO DE ESTADO ─────────────────────────────────── */
   { cargo:["sec-estado","chefe-gabinete-gov","dir-org-estadual"],
@@ -743,21 +743,23 @@ const regras = [
     tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
     desc:"Secretários municipais devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura. A nomenclatura do cargo é irrelevante: o que importa é a competência efetivamente exercida (TSE, AgR-REspEl nº 060025489/2021).",
     device:"LC 64/1990, art. 1º, III, 'b', item 4; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI",
-    obs:"Cargo designado como 'secretário adjunto' que substitui o titular e executa as políticas da pasta foi equiparado a Secretário Municipal pelo TSE." },
+    obs:"O critério é material, não formal: o que determina a equiparação a Secretário Municipal é o exercício de competências de gestão de políticas públicas e a função de substituição do titular. Assessores e chefes de gabinete com poderes amplos podem ser equiparados a secretários a depender do caso concreto, ainda que designados por nomenclatura diversa (TSE, AgR-REspEl nº 060025489/2021)." },
 
   /* ── AUTARQUIAS ESTADUAIS E MUNICIPAIS ───────────────────── */
   { cargo:["pres-autarquia-est","pres-autarquia-mun","tce-membro"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
     tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
-    desc:"Presidentes, diretores e superintendentes de autarquias, EP, SEM e fundações estaduais ou municipais devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura.",
-    device:"LC 64/1990, art. 1º, II, 'a', item 9; art. 1º, III, 'a'; art. 1º, IV, 'a'", obs:null },
+    desc:"Presidentes, diretores e superintendentes de autarquias, EP, SEM e fundações estaduais ou municipais devem afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura. Conselheiros substitutos e auditores de Tribunais de Contas são equiparados aos membros titulares quando no exercício efetivo das funções de controle externo.",
+    device:"LC 64/1990, art. 1º, II, 'a', item 9; art. 1º, III, 'a'; art. 1º, IV, 'a'",
+    obs:"<strong>Limites da equiparação:</strong> Dirigente de associação privada não está sujeito ao prazo de 6 meses, ainda que a entidade receba subvenções públicas — a regra do art. 1º, II, 'a', item 9, alcança apenas entidades que integram formalmente a Administração Indireta (TSE, AgR-REspe nº 19.983/2016; REspEl nº 060062698/2020). Além disso, consórcios públicos intermunicipais não se enquadram como autarquias para fins de desincompatibilização — o Prefeito candidato à reeleição não precisa se afastar da presidência do consórcio (TSE, REspe nº 31.655/2012)." },
 
   /* ── MAGISTRADO ───────────────────────────────────────────── */
   { cargo:["magistrado"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
     tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
     desc:"Magistrados (federais ou estaduais) devem afastar-se definitivamente 6 meses antes do pleito para concorrer a qualquer cargo eletivo.",
-    device:"LC 64/1990, art. 1º, II, 'a', item 8; art. 1º, III, 'a'; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI", obs:null },
+    device:"LC 64/1990, art. 1º, II, 'a', item 8; art. 1º, III, 'a'; art. 1º, IV, 'a'; art. 1º, V, 'a'; art. 1º, VI",
+    obs:"<strong>Nota histórica e postura conservadora:</strong> Anteriormente às reformas legislativas (LC 135/2010 e LC 219/2025), havia distinção de prazos por cargo pretendido — o TSE chegou a fixar 4 meses para candidatura a Prefeito e 6 meses para Vereador (Res. nº 18.176/1992, rel. Min. José Cândido). A redação atual da LC 64/1990, com as alterações da LC 219/2025, tende à uniformização em 6 meses para todos os cargos, postura que esta ferramenta adota preventivamente como orientação conservadora de assessoramento." },
 
   /* ── MP FEDERAL ───────────────────────────────────────────── */
   { cargo:["mp-federal","mp-estadual"],
@@ -786,7 +788,7 @@ const regras = [
     tipo:"Licença remunerada (afastamento temporário)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
     desc:"Servidores públicos efetivos (estatutários) devem afastar-se de fato 3 meses antes do pleito. O afastamento é remunerado: os vencimentos integrais são garantidos durante o período e o servidor pode ser prorrogado por até 10 dias após o segundo turno se dele participar. O cargo efetivo fica preservado; o servidor retorna ao posto ao término do mandato ou se não for eleito.",
     device:"LC 64/1990, art. 1º, II, 'l' (redação da LC 219/2025); CF/1988, art. 38, III; Lei 8.112/1990, art. 94",
-    obs:"O afastamento deve ser de fato e de direito. Colocação à disposição de outro setor não configura desincompatibilização (TSE, RO 559/2002). Retorno imediato obrigatório se o registro não for formalizado ou for cassado (LC 64/1990, art. 1º, § 7º — LC 219/2025)." },
+    obs:"O afastamento deve ser de fato e de direito. Colocação à disposição de outro setor não configura desincompatibilização (TSE, RO 559/2002). Retorno imediato obrigatório se o registro não for formalizado ou for cassado (LC 64/1990, art. 1º, § 7º — LC 219/2025). <strong>Atenção — servidor do fisco:</strong> servidores com competência de lançamento, arrecadação ou fiscalização de impostos, taxas e contribuições (art. 1º, II, 'd', da LC 64/1990) estão sujeitos ao prazo de <strong>6 meses</strong> — e não de 3 meses —, conforme ressalva expressa do TSE (Res. nº 20.632/2000, Cta nº 629). Servidores da Receita Federal, fiscais estaduais e municipais tributários devem observar esse prazo diferenciado." },
 
   /* ── COMISSIONADO PURO (SEM VÍNCULO EFETIVO) ─────────────── */
   { cargo:["comissionado-puro-fed","comissionado-puro-est","comissionado-puro-mun"],
@@ -794,7 +796,7 @@ const regras = [
     tipo:"Exoneração obrigatória (sem remuneração no período)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
     desc:"O servidor exclusivamente comissionado (sem cargo efetivo subjacente) deve ser exonerado do cargo comissionado pelo menos 3 meses antes do pleito — não basta o afastamento de fato (Súmula TSE 54). Diferentemente do servidor efetivo, não há direito a remuneração durante o período de afastamento pré-eleitoral, uma vez que o cargo em comissão é de livre nomeação e exoneração.",
     device:"LC 64/1990, art. 1º, II, 'l'; Súmula TSE 54; TSE, Res. nº 20135/1998 (Cta 401) — sem remuneração para comissionados puros",
-    obs:"A Súmula TSE 54 é taxativa: a desincompatibilização pressupõe a exoneração, não apenas o afastamento de fato. A ausência de cargo efetivo afasta o direito à remuneração durante o período (TSE, Cta 401/1998)." },
+    obs:"A Súmula TSE 54 é taxativa: a desincompatibilização pressupõe a exoneração, não apenas o afastamento de fato. A ausência de cargo efetivo afasta o direito à remuneração durante o período (TSE, Cta 401/1998). <strong>Atenção — exoneração real, não apenas formal:</strong> o candidato que apresentou requerimento de exoneração mas continuou exercendo as funções e recebendo vencimentos foi declarado inelegível (TSE, REspe nº 13.788/1997, rel. Min. Ilmar Galvão). A exoneração deve ser real, operacional e verificável — o desligamento efetivo das funções é condição sine qua non." },
 
   /* ── EFETIVO EM COMISSÃO ──────────────────────────────────── */
   { cargo:["efetivo-em-comissao"],
@@ -810,7 +812,7 @@ const regras = [
     tipo:"Afastamento (3 meses) — sem remuneração garantida", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
     desc:"Servidores contratados temporariamente (art. 37, IX, CF) e empregados públicos (CLT) estão sujeitos à regra geral do art. 1º, II, 'l', da LC 64/1990, devendo afastar-se 3 meses antes do pleito. A garantia de remuneração integral aplica-se apenas aos estatutários efetivos; contratados temporários devem afastar-se de fato, mas a proteção remuneratória depende da legislação específica do ente.",
     device:"LC 64/1990, art. 1º, II, 'l'; TSE, REspe nº 72793/2014 (professora temporária); AgR-REspEl nº 060030736/2021",
-    obs:"A exigência de afastamento se aplica mesmo a professora temporária escolhida para vaga remanescente (TSE, REspe 72793/2014). O prazo é improrrogável e não comporta mitigação." },
+    obs:"A exigência de afastamento se aplica mesmo a professora temporária escolhida para vaga remanescente (TSE, REspe 72793/2014). O prazo é improrrogável e não comporta mitigação. <strong>Empregados de SEM:</strong> o TSE equipara empregados de sociedades de economia mista a servidores públicos para fins de desincompatibilização, sujeitando-os ao prazo de 3 meses do art. 1º, II, 'l' — o que abrange empregados de bancos estatais, empresas de saneamento e similares (TSE, REspe nº 15.459/1998; REspe nº 16.595/2000; RO nº 1.004/2006)." },
 
   /* ── PROFESSOR EFETIVO ────────────────────────────────────── */
   { cargo:["professor-efetivo"],
@@ -888,7 +890,8 @@ const regras = [
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
     tipo:"Licença / Afastamento (3 meses)", badgeClass:"badge-licenca", prazo:"3 meses antes do pleito",
     desc:"Autoridade policial civil estadual fora do município da candidatura submete-se à regra geral dos servidores públicos: afastamento de 3 meses antes do pleito.",
-    device:"LC 64/1990, art. 1º, II, 'l' c/c art. 1º, III, 'a'", obs:null },
+    device:"LC 64/1990, art. 1º, II, 'l' c/c art. 1º, III, 'a'",
+    obs:"<strong>Interpretação funcional:</strong> A expressão 'autoridade policial' abrange não apenas delegados e comissários, mas toda autoridade com competências efetivas de mando nas atividades policiais, conforme construção jurisprudencial do TSE. <strong>Delegado candidato a Prefeito fora do seu município de exercício:</strong> sujeita-se apenas ao prazo de 3 meses do art. 1º, II, 'l' (servidor público), pois a regra específica do art. 1º, IV, 'c', vincula-se ao exercício da função no Município da candidatura." },
 
   { cargo:["autoridade-policial-est"],
     pretendido:["prefeito-vp","vereador"],
@@ -970,17 +973,17 @@ const regras = [
 
   { cargo:["dirigente-sindical-contrib"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
-    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
-    desc:"Dirigente (presidente, diretor, administrador ou representante) de sindicato mantido, total ou parcialmente, com contribuições impostas pelo poder público ou com recursos arrecadados e repassados pela Previdência Social deve afastar-se definitivamente 6 meses antes do pleito para candidatura a cargos federais ou estaduais.",
-    device:"LC 64/1990, art. 1º, II, 'g' (redação da LC 219/2025); art. 1º, III, 'a'; art. 1º, V, 'a'; art. 1º, VI",
-    obs:"O prazo era de 4 meses na redação original, mas a LC 219/2025 uniformizou o prazo para 6 meses. Suplente da diretoria também pode estar sujeito se efetivamente no exercício de funções de representação (TSE, REspe 10276/1992)." },
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"4 meses antes do pleito",
+    desc:"Dirigente (presidente, diretor, administrador ou representante) de sindicato mantido, total ou parcialmente, com contribuições impostas pelo poder público ou com recursos arrecadados e repassados pela Previdência Social deve afastar-se definitivamente pelo menos 4 meses antes do pleito para candidatura a cargos federais ou estaduais.",
+    device:"LC 64/1990, art. 1º, II, 'g'; TSE, Res. nº 19.566/1996; Res. nº 20.623/2000; Res. nº 22.194/2006; Res. nº 23.239/2010; CtaEl nº 060019842/2025 (rel. Min. Isabel Gallotti — manteve prazo de 4 meses)",
+    obs:"<strong>Prazo consolidado em 4 meses pela jurisprudência reiterada do TSE</strong> (CtaEl nº 060019842/2025; Res. nº 19.566/1996; 20.623/2000; 21.041/2002; 22.194/2006; 23.239/2010). A LC 219/2025 reformou a LC 64/1990, mas a aplicação de seus efeitos ao prazo da alínea 'g' é questão ainda aberta, pendente de posição definitiva do TSE para as eleições de 2026 — recomenda-se acompanhar a jurisprudência do TSE especificamente para 2026. <strong>Alerta adicional:</strong> qualquer repasse de recurso público à entidade, por menor que seja, atrai a obrigatoriedade de desincompatibilização (TSE, CtaEl nº 060019842/2025). Suplente da diretoria pode estar sujeito se efetivamente no exercício de funções de representação (TSE, REspe 10276/1992)." },
 
   { cargo:["dirigente-sindical-contrib"],
     pretendido:["prefeito-vp","vereador"],
-    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
-    desc:"Dirigente de sindicato mantido com recursos compulsórios ou previdenciários deve afastar-se definitivamente 6 meses antes do pleito para candidatura a cargos municipais.",
-    device:"LC 64/1990, art. 1º, II, 'g'; art. 1º, IV, 'a' (redação da LC 219/2025)",
-    obs:"A jurisprudência fixou prazo de 4 meses para pleito municipal antes da LC 219/2025 (TSE, Cta 163/1996). Com a nova redação, o prazo é de 6 meses." },
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"4 meses antes do pleito",
+    desc:"Dirigente de sindicato mantido com recursos compulsórios ou previdenciários deve afastar-se definitivamente pelo menos 4 meses antes do pleito para candidatura a cargos municipais.",
+    device:"LC 64/1990, art. 1º, II, 'g'; art. 1º, IV, 'a'; TSE, Res. nº 19.566/1996; Cta nº 163/1996; CtaEl nº 060019842/2025 (rel. Min. Isabel Gallotti)",
+    obs:"O prazo de 4 meses é reiteradamente fixado pelo TSE para todos os cargos eletivos — federais, estaduais e municipais (CtaEl nº 060019842/2025; Res. nº 19.566/1996; Res. nº 23.239/2010). A aplicação da LC 219/2025 ao prazo da alínea 'g' é questão aberta, pendente de confirmação pelo TSE para 2026 — recomenda-se monitorar a jurisprudência." },
 
   { cargo:["dirigente-sindical-volunt"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
@@ -998,10 +1001,10 @@ const regras = [
 
   { cargo:["dirigente-classe-contrib"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
-    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
-    desc:"Dirigentes de entidades representativas de classe (CRM, CREA, OAB, CRO, conselhos regionais etc.) mantidas com contribuições compulsórias impostas pelo poder público devem afastar-se definitivamente 6 meses antes do pleito. A OAB foi expressamente enquadrada pelo TSE nessa hipótese.",
-    device:"LC 64/1990, art. 1º, II, 'g' (redação da LC 219/2025); TSE, AgR-REspe nº 26211/2017 e Cta nº 11187/2014 (OAB enquadrada); Res. TSE 16547/1990 (conselhos regionais — prazo nunca inferior a 4 meses, atualizado para 6 meses pela LC 219/2025)",
-    obs:"O prazo se aplica ao exercício de cargo de direção, administração ou representação — não à mera filiação ou associação à entidade." },
+    tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"4 meses antes do pleito",
+    desc:"Dirigentes de entidades representativas de classe (CRM, CREA, OAB, CRO, conselhos regionais etc.) mantidas com contribuições compulsórias impostas pelo poder público devem afastar-se definitivamente pelo menos 4 meses antes do pleito. A OAB foi expressamente enquadrada pelo TSE nessa hipótese.",
+    device:"LC 64/1990, art. 1º, II, 'g'; TSE, AgR-REspe nº 26211/2017; Cta nº 11187/2014 (OAB); Res. TSE 16547/1990 (conselhos regionais — prazo mínimo de 4 meses); CtaEl nº 060019842/2025 (rel. Min. Isabel Gallotti)",
+    obs:"O prazo de 4 meses é o assentado pela jurisprudência reiterada do TSE para dirigentes de entidades de classe custeadas por contribuições compulsórias (CtaEl nº 060019842/2025; Res. nº 16.547/1990). O prazo se aplica ao exercício de cargo de direção, administração ou representação — não à mera filiação ou associação à entidade. A aplicação da LC 219/2025 a este prazo é questão aberta — recomenda-se acompanhar a jurisprudência do TSE para 2026." },
 
   /* ══════════════════════════════════════════════════════════════
      MANDATÁRIOS ELETIVOS EM EXERCÍCIO
@@ -1018,7 +1021,7 @@ const regras = [
     tipo:"Sem desincompatibilização (mandatário eletivo legislativo)", badgeClass:"badge-nenhum", prazo:"—",
     desc:"Parlamentares em exercício de mandato eletivo legislativo (Vereador, Deputado Estadual, Deputado Federal, Senador) podem concorrer a qualquer cargo eletivo sem renunciar ao mandato. A LC 64/1990 não prevê prazo de desincompatibilização para essa categoria.",
     device:"CF/1988, art. 14, § 6º (in fine); LC 64/1990, art. 1º, I, 'k' (a contrario sensu para parlamentares)",
-    obs:"Verificar se incide inelegibilidade reflexa por parentesco (art. 1º, § 3º, LC 64/1990) ou qualquer outra causa de inelegibilidade do art. 1º, I." },
+    obs:"Verificar se incide inelegibilidade reflexa por parentesco (art. 1º, § 3º, LC 64/1990) ou qualquer outra causa de inelegibilidade do art. 1º, I. <strong>Exceção relevante — Presidente da Câmara que assume a Prefeitura por dupla vacância:</strong> o TSE aplicou a inelegibilidade constitucional do art. 14, § 6º, da CF/1988 ainda que o cargo de origem fosse legislativo, quando o Presidente da Câmara assumiu o Executivo Municipal por dupla vacância nos 6 meses anteriores ao pleito (TSE, REspEl nº 060038872/2021, rel. Min. Mauro Campbell Marques). Esse cenário tem ocorrência real e pode surpreender o assessorado que se apoia apenas na regra geral dos parlamentares." },
 
   /* ══════════════════════════════════════════════════════════════
      EMPRESAS E CONTRATOS
@@ -1029,7 +1032,7 @@ const regras = [
     tipo:"Desincompatibilização definitiva", badgeClass:"badge-descompat", prazo:"6 meses antes do pleito",
     desc:"Quem tenha exercido cargo de direção, administração ou representação em pessoa jurídica ou empresa com contrato de execução de obras, prestação de serviços ou fornecimento de bens com o poder público nos 6 meses anteriores ao pleito incorre em inelegibilidade se não se afastar no prazo.",
     device:"LC 64/1990, art. 1º, II, 'i'; art. 1º, III, 'a'; art. 1º, IV, 'a'",
-    obs:"Excetua-se o contrato celebrado mediante cláusulas uniformes (art. 1º, II, 'i', in fine)." },
+    obs:"Excetua-se o contrato celebrado mediante cláusulas uniformes (art. 1º, II, 'i', in fine). <strong>Sócio sem função de gestão:</strong> simples sócio minoritário sem cargo de direção, administração ou representação não está sujeito à regra — a inelegibilidade pressupõe o exercício efetivo de função de mando na empresa (TSE, RO nº 251.457/2011, rel. Min. Gilson Dipp). <strong>Contrato encerrado antes do período:</strong> candidato cujo contrato com o poder público se encerrou antes dos 6 meses anteriores ao pleito não incorre em inelegibilidade (TSE, AgRgREspe nº 24.400/2004, rel. Min. Carlos Velloso)." },
 
   { cargo:["dir-financeira"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
