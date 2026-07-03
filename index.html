@@ -40,129 +40,6 @@ body {
 }
 
 /* ══════════════════════════════════════════════════
-   HEADER
-══════════════════════════════════════════════════ */
-.site-header {
-  background: var(--escuro);
-  position: relative;
-  overflow: hidden;
-}
-
-/* grade triangular decorativa */
-.site-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='340'%3E%3Cg fill='none' stroke='rgba(0,104,81,0.22)' stroke-width='0.8'%3E%3Cpolygon points='200,12 380,328 20,328'/%3E%3Cpolygon points='200,48 340,308 60,308'/%3E%3Cpolygon points='200,84 300,288 100,288'/%3E%3Cpolygon points='110,12 290,328 -70,328'/%3E%3Cpolygon points='290,12 470,328 110,328'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 400px 340px;
-  background-repeat: repeat;
-  pointer-events: none;
-}
-
-/* barra verde fina no topo */
-.site-header::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--verde) 0%, var(--verde-mid) 60%, transparent 100%);
-}
-
-.header-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem 2rem 1.75rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.header-left { display: flex; flex-direction: column; gap: 4px; }
-
-.header-eyebrow {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--verde-mid);
-}
-
-.header-nome {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--branco);
-  line-height: 1.1;
-}
-
-.header-sub {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.40);
-  margin-top: 2px;
-}
-
-.header-divider {
-  width: 32px; height: 1px;
-  background: var(--verde);
-  margin: 8px 0;
-}
-
-.header-contato {
-  font-size: 11px;
-  color: rgba(255,255,255,0.45);
-  letter-spacing: 0.03em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.header-contato a {
-  color: rgba(255,255,255,0.55);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.header-contato a:hover { color: var(--verde-mid); }
-.header-contato-sep { color: rgba(255,255,255,0.25); }
-
-/* ── coluna direita: texto do sistema ─── */
-.header-right {
-  text-align: right;
-  padding-left: 1.5rem;
-  border-left: 1px solid rgba(0,104,81,0.3);
-}
-
-.header-sys-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--verde);
-  margin-bottom: 6px;
-}
-
-.header-sys-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.85);
-  line-height: 1.35;
-  max-width: 200px;
-  margin-left: auto;
-}
-
-@media (max-width: 580px) {
-  .header-inner { grid-template-columns: 1fr; }
-  .header-right { text-align: left; border-left: none; border-top: 1px solid rgba(0,104,81,0.3); padding-left: 0; padding-top: 1rem; }
-  .header-sys-title { max-width: none; margin-left: 0; }
-}
-
-/* ══════════════════════════════════════════════════
    GRID DE SELEÇÃO
 ══════════════════════════════════════════════════ */
 .container {
@@ -237,7 +114,6 @@ body {
   color: var(--muted);
 }
 
-/* indicador de dependência */
 .select-locked {
   opacity: 0.5;
   pointer-events: none;
@@ -437,27 +313,6 @@ footer {
 </head>
 <body>
 
-<!-- ══ HEADER ══════════════════════════════════ -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="header-left">
-      <span class="header-eyebrow">ELEIÇÕES 2026</span>
-      <p class="header-nome">Monteiro e Monteiro</p>
-      <p class="header-sub">Advogados Associados</p>
-      <div class="header-divider"></div>
-      <div class="header-contato">
-        <a href="mailto:novo@monteiro.adv.br">novo@monteiro.adv.br</a>
-        <span class="header-contato-sep">·</span>
-        <a href="tel:+5581991950063">(81) 99195-0063</a>
-      </div>
-    </div>
-    <div class="header-right">
-      <p class="header-sys-label">Sistema de Consulta</p>
-      <p class="header-sys-title">Desincompatibilização&nbsp;Eleitoral</p>
-    </div>
-  </div>
-</header>
-
 <!-- ══ CONTEÚDO ══════════════════════════════════ -->
 <div class="container">
 
@@ -620,7 +475,7 @@ footer {
     <div id="result-inner"></div>
   </div>
 
-  <!-- ══ CARD CONTAGEM DE PRAZO (autônomo, flutua sobre o off) ══ -->
+  <!-- ══ CARD CONTAGEM DE PRAZO ══ -->
   <div class="prazo-card">
     <p class="prazo-card-title">Contagem de Prazo</p>
     <p class="prazo-card-text">
@@ -859,6 +714,7 @@ const regras = [
     desc:"O Chefe do Estado-Maior das Forças Armadas e os Comandantes de Distrito Naval, Região Militar e Zona Aérea são militares <strong>federais</strong> listados expressamente na LC 64/1990 e devem afastar-se definitivamente 6 meses antes do pleito. O art. 1º, II, 'a', item 4, contempla o Chefe do EMFA; o art. 1º, III, 'b', item 2, trata especificamente dos Comandantes de Zona no contexto da inelegibilidade para cargos estaduais — a inserção deste dispositivo no inciso III não altera a natureza federal dos titulares nem o prazo de 6 meses aplicável.",
     device:"LC 64/1990, art. 1º, II, 'a', item 4 (Chefe do EMFA); art. 1º, III, 'b', item 2 (Comandantes de Zona — inelegibilidade para cargos estaduais); art. 1º, IV, 'a'",
     obs:"Atenção: esses cargos pertencem às Forças Armadas (esfera federal), não às polícias militares estaduais. A inserção no art. 1º, III, da LC 64/1990 diz respeito ao âmbito da inelegibilidade (cargos estaduais), não à natureza federativa do cargo." },
+
   { cargo:["militar-fa-menos10"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
     tipo:"Afastamento definitivo irreversível (demissão / licenciamento ex officio)", badgeClass:"badge-militar",
@@ -920,9 +776,7 @@ const regras = [
     desc:"O Diretor-Geral da Polícia Federal está expressamente listado no art. 1º, II, 'a', da LC 64/1990 e deve afastar-se definitivamente 6 meses antes do pleito para qualquer candidatura.",
     device:"LC 64/1990, art. 1º, II, 'a', item 15; art. 1º, III, 'a'; art. 1º, IV, 'a'", obs:null },
 
-  /* ══════════════════════════════════════════════════════════════
-     COMUNICADORES
-     ══════════════════════════════════════════════════════════════ */
+  /* ── COMUNICADORES ──────────────────────────────────────────── */
 
   { cargo:["comunicador-tv-radio"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
@@ -948,9 +802,7 @@ const regras = [
     device:"LC 64/1990, art. 1º, II, 'l' (ou prazo específico do cargo); Lei 9.504/1997, art. 45, § 1º; art. 36-A, §§ 2º e 3º",
     obs:"A desincompatibilização do cargo público ocorre de forma independente da atividade comunicacional. Consulte a regra específica do cargo público acumulado para verificar o prazo aplicável." },
 
-  /* ══════════════════════════════════════════════════════════════
-     LÍDERES RELIGIOSOS
-     ══════════════════════════════════════════════════════════════ */
+  /* ── LÍDERES RELIGIOSOS ─────────────────────────────────────── */
 
   { cargo:["pastor-sem-convenio"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
@@ -967,9 +819,7 @@ const regras = [
     device:"LC 64/1990, art. 1º, II, 'i'; art. 1º, III, 'a'; IV, 'a'; TRE-RJ, RE nº 19162/2012; TSE, AgR-REspEl nº 060009815/2025 (tese: instrumento gratuito sem repasse não equipara a contrato/convênio para fins do art. 1º, II, 'i')",
     obs:"<strong>Distinção determinante — natureza do instrumento:</strong> A incidência da inelegibilidade pressupõe (1) contrato ou convênio com <em>efetivo repasse de recursos financeiros</em> à entidade e (2) instrumento que não obedeça a cláusulas uniformes. <strong>Ficam fora da inelegibilidade:</strong> acordos de cooperação técnica gratuitos; cessões de uso de bem público; subvenções sociais sem contrato de prestação de serviços; doações para eventos isolados (TSE, AgR-REspEl nº 060009815/2025, rel. Min. Floriano de Azevedo Marques; REspe nº 38575/2012, rel. Min. Marco Aurélio). Essa distinção não é recomendação de cautela — ela é <strong>determinante</strong> para a incidência ou não da inelegibilidade, com tese jurisprudencial expressa do TSE fixada em 2025." },
 
-  /* ══════════════════════════════════════════════════════════════
-     SINDICATOS E ENTIDADES DE CLASSE
-     ══════════════════════════════════════════════════════════════ */
+  /* ── SINDICATOS E ENTIDADES DE CLASSE ──────────────────────── */
 
   { cargo:["dirigente-sindical-contrib"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual"],
@@ -1006,9 +856,7 @@ const regras = [
     device:"LC 64/1990, art. 1º, II, 'g'; TSE, AgR-REspe nº 26211/2017; Cta nº 11187/2014 (OAB); Res. TSE 16547/1990 (conselhos regionais — prazo mínimo de 4 meses); CtaEl nº 060019842/2025 (rel. Min. Isabel Gallotti)",
     obs:"O prazo de 4 meses é o assentado pela jurisprudência reiterada do TSE para dirigentes de entidades de classe custeadas por contribuições compulsórias (CtaEl nº 060019842/2025; Res. nº 16.547/1990). O prazo se aplica ao exercício de cargo de direção, administração ou representação — não à mera filiação ou associação à entidade. A aplicação da LC 219/2025 a este prazo é questão aberta — recomenda-se acompanhar a jurisprudência do TSE para 2026." },
 
-  /* ══════════════════════════════════════════════════════════════
-     MANDATÁRIOS ELETIVOS EM EXERCÍCIO
-     ══════════════════════════════════════════════════════════════ */
+  /* ── MANDATÁRIOS ELETIVOS EM EXERCÍCIO ──────────────────────── */
 
   { cargo:["vereador"],
     pretendido:["vereador"],
@@ -1023,9 +871,7 @@ const regras = [
     device:"CF/1988, art. 14, § 6º (in fine); LC 64/1990, art. 1º, I, 'k' (a contrario sensu para parlamentares)",
     obs:"Verificar se incide inelegibilidade reflexa por parentesco (art. 1º, § 3º, LC 64/1990) ou qualquer outra causa de inelegibilidade do art. 1º, I. <strong>Exceção relevante — Presidente da Câmara que assume a Prefeitura por dupla vacância:</strong> o TSE aplicou a inelegibilidade constitucional do art. 14, § 6º, da CF/1988 ainda que o cargo de origem fosse legislativo, quando o Presidente da Câmara assumiu o Executivo Municipal por dupla vacância nos 6 meses anteriores ao pleito (TSE, REspEl nº 060038872/2021, rel. Min. Mauro Campbell Marques). Esse cenário tem ocorrência real e pode surpreender o assessorado que se apoia apenas na regra geral dos parlamentares." },
 
-  /* ══════════════════════════════════════════════════════════════
-     EMPRESAS E CONTRATOS
-     ══════════════════════════════════════════════════════════════ */
+  /* ── EMPRESAS E CONTRATOS ───────────────────────────────────── */
 
   { cargo:["dir-empresa-contrato"],
     pretendido:["presidente-vp","governador-vg","senador","dep-federal","dep-estadual","prefeito-vp","vereador"],
@@ -1052,7 +898,6 @@ function onCargoChange() {
 
   if (cargo) {
     sel.classList.remove("select-locked");
-    // restaurar opção placeholder correta
     sel.options[0].textContent = "— selecione o cargo pretendido —";
     sel.value = "";
   } else {
@@ -1060,7 +905,6 @@ function onCargoChange() {
     sel.options[0].textContent = "— selecione o cargo acima primeiro —";
     sel.value = "";
   }
-  // limpar resultado anterior
   document.getElementById("result-card").className = "result-card";
 }
 
